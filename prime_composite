@@ -1,0 +1,31 @@
+<?php
+
+$start = 2; 
+$end = 100;
+$primeSum = 0;
+$compositeSum = 0;
+$primeNumbers = "";
+
+for ($i = $start; $i <= $end; $i++) {
+    $isPrime = true;  // Assume $i is prime
+
+    for ($j = 2; $j <= sqrt($i); $j++) {  // Optimize by checking up to sqrt($i)
+        if ($i % $j == 0) {
+            $isPrime = false;  // $i is not prime
+            break;
+        }
+    }
+
+    if ($isPrime) {
+        $primeNumbers .= $i . " ";  // Add prime number to the list
+        $primeSum += $i;  // Add to prime sum
+    } else {
+        $compositeSum += $i;  // Add to composite sum
+    }
+}
+
+echo ($primeNumbers) . "<br>";
+echo ("Sum of Prime Numbers: " . $primeSum) . "<br>";
+echo ("Sum of Composite Numbers: " . $compositeSum) . "<br>";
+
+?>
